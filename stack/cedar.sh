@@ -30,7 +30,7 @@ apt-get install -y --force-yes --no-install-recommends language-pack-aa \
     language-pack-ha language-pack-he language-pack-hi language-pack-hne \
     language-pack-hr language-pack-hsb language-pack-ht language-pack-hu \
     language-pack-hy language-pack-ia language-pack-id language-pack-ig \
-    language-pack-is language-pack-it language-pack-iu language-pack-ja \
+    language-pack-is language-pack-it  language-pack-ja \
     language-pack-ka language-pack-kk language-pack-km language-pack-kn \
     language-pack-ko language-pack-ks language-pack-ku language-pack-kw \
     language-pack-ky language-pack-la language-pack-lg language-pack-li \
@@ -38,7 +38,7 @@ apt-get install -y --force-yes --no-install-recommends language-pack-aa \
     language-pack-mg language-pack-mi language-pack-mk language-pack-ml \
     language-pack-mn language-pack-mr language-pack-ms language-pack-mt \
     language-pack-nan language-pack-nb language-pack-nds language-pack-ne \
-    language-pack-nl language-pack-nn language-pack-nr language-pack-nso \
+    language-pack-nl language-pack-nn language-pack-nso \
     language-pack-oc language-pack-om language-pack-or language-pack-pa \
     language-pack-pap language-pack-pl language-pack-pt language-pack-ro \
     language-pack-ru language-pack-rw language-pack-sa language-pack-sc \
@@ -47,18 +47,18 @@ apt-get install -y --force-yes --no-install-recommends language-pack-aa \
     language-pack-sr language-pack-ss language-pack-st language-pack-sv \
     language-pack-ta language-pack-te language-pack-tg language-pack-th \
     language-pack-ti language-pack-tk language-pack-tl language-pack-tlh \
-    language-pack-tn language-pack-tr language-pack-ts language-pack-tt \
+    language-pack-tr language-pack-ts language-pack-tt \
     language-pack-ug language-pack-uk language-pack-ur language-pack-uz \
     language-pack-ve language-pack-vi language-pack-wa language-pack-wo \
-    language-pack-xh language-pack-yi language-pack-yo language-pack-zh \
+    language-pack-xh language-pack-yi language-pack-yo \
     language-pack-zh-hans language-pack-zh-hant language-pack-zu
 
 # pull in a newer libpq
-echo "deb http://apt.postgresql.org/pub/repos/apt/ quantal-pgdg main" >> /etc/apt/sources.list
+echo "deb http://apt.postgresql.org/pub/repos/apt/ lucid-pgdg main" >> /etc/apt/sources.list
 
 cat > /etc/apt/preferences <<EOF
 Package: *
-Pin: release a=quantal-pgdg
+Pin: release a=lucid-pgdg
 Pin-Priority: -10
 EOF
 
@@ -103,8 +103,12 @@ cd ruby-1.9.2-p290 && ./configure --prefix=/usr/local && make && make install
 
 cd /
 rm -rf /var/cache/apt/archives/*.deb
+rm -rf /var/lib/apt/lists/*
 rm -rf /root/*
 rm -rf /tmp/*
+
+apt-get clean
+
 
 # remove SUID and SGID flags from all binaries
 function pruned_find() {
