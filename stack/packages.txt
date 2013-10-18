@@ -34,7 +34,6 @@ openjdk-6-jre-headless
 openssh-client
 openssh-server
 postgresql
-postgresql-server-dev-9.1
 rubygems
 socat
 syslinux
