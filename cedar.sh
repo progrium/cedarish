@@ -12,22 +12,8 @@ deb http://archive.ubuntu.com/ubuntu quantal universe
 EOF
 
 apt-get update
-apt-get install -y --force-yes language-pack-en
-apt-get install -y --force-yes coreutils tar build-essential autoconf
-apt-get install -y --force-yes libxslt-dev libxml2-dev libglib2.0-dev \
-    libbz2-dev libreadline-gplv2-dev zlib1g-dev libevent-dev libssl-dev libpq-dev \
-    libncurses5-dev libcurl4-openssl-dev libjpeg-dev libmysqlclient-dev
-apt-get install -y --force-yes daemontools
-apt-get install -y --force-yes curl netcat-openbsd telnet
-apt-get install -y --force-yes iputils-tracepath bind9-host dnsutils socat
-apt-get install -y --force-yes ed bison
-apt-get install -y --force-yes openssh-client openssh-server
-apt-get install -y --force-yes imagemagick libmagick9-dev
-apt-get install -y --force-yes ia32-libs
-apt-get install -y --force-yes openjdk-6-jdk openjdk-6-jre-headless
 
-# for the "gethostip" tool
-apt-get install -y --force-yes syslinux
+xargs apt-get install -y --force-yes < packages.txt
 
 # locales
 apt-get install -y --force-yes --no-install-recommends language-pack-aa \
@@ -68,11 +54,11 @@ apt-get install -y --force-yes --no-install-recommends language-pack-aa \
     language-pack-zh-hans language-pack-zh-hant language-pack-zu
 
 # pull in a newer libpq
-echo "deb http://apt.postgresql.org/pub/repos/apt/ lucid-pgdg main" >> /etc/apt/sources.list
+echo "deb http://apt.postgresql.org/pub/repos/apt/ quantal-pgdg main" >> /etc/apt/sources.list
 
 cat > /etc/apt/preferences <<EOF
 Package: *
-Pin: release a=lucid-pgdg
+Pin: release a=quantal-pgdg
 Pin-Priority: -10
 EOF
 
@@ -83,12 +69,7 @@ if [ "$(sha256sum /tmp/postgres.asc)" = \
 fi
 
 apt-get update
-apt-get install -y --force-yes -t lucid-pgdg libpq5 libpq-dev
-
-# need an older squashfs-tools
-cd /tmp
-curl --retry 3 --max-time 60 --write-out %{http_code} --silent -o squashfs-tools_3.3-1ubuntu2_amd64.deb http://launchpadlibrarian.net/11397899/squashfs-tools_3.3-1ubuntu2_amd64.deb
-dpkg -i squashfs-tools_3.3-1ubuntu2_amd64.deb
+apt-get install -y --force-yes -t quantal-pgdg libpq5 libpq-dev
 
 # git changes important semantics in sub-bugfix version bumps unfortunately:
 # http://git.661346.n2.nabble.com/Git-sideband-hook-output-td5155362.html
