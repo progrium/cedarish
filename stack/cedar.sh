@@ -69,7 +69,7 @@ if [ "$(sha256sum /tmp/postgres.asc)" = \
 fi
 
 apt-get update
-apt-get install -y --force-yes -t quantal-pgdg libpq5 libpq-dev
+apt-get install -y --force-yes -t lucid-pgdg libpq5 libpq-dev
 
 # git changes important semantics in sub-bugfix version bumps unfortunately:
 # http://git.661346.n2.nabble.com/Git-sideband-hook-output-td5155362.html
