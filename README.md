@@ -1,4 +1,4 @@
-# Cedarish Base Image
+# Heroku Cedar-ish Base Image for Docker
 
 This is the source for a Docker image to be used for environments emulating the Heroku Cedar stack. It's sort of a mashup of the official [cedar.sh](https://github.com/heroku/stack-images/blob/master/bin/cedar.sh) Heroku uses, and the prepare script of [Buildstep](https://github.com/progrium/buildstep). 
 
