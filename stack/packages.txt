@@ -32,6 +32,7 @@ openjdk-6-jdk
 openjdk-6-jre-headless
 openssh-client
 openssh-server
+pigz
 python-dev
 ruby1.9.1-dev
 rubygems
