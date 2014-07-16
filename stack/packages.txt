@@ -35,7 +35,7 @@ openssh-server
 pigz
 python-dev
 ruby1.9.1-dev
-rubygems
+ruby
 socat
 syslinux
 sqlite3
