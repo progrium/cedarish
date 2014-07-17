@@ -1,4 +1,4 @@
-FROM ubuntu:quantal
+FROM ubuntu:trusty
 MAINTAINER progrium "progrium@gmail.com"
 
 RUN mkdir /tmp/build
