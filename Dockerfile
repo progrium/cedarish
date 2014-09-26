@@ -1,4 +1,4 @@
-FROM ubuntu:trusty
+FROM ubuntu-debootstrap:14.04
 MAINTAINER progrium "progrium@gmail.com"
 
 RUN mkdir /tmp/build
