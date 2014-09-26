@@ -35,6 +35,14 @@ pruned_find -perm /g+s | xargs -r chmod g-s
 # remove non-root ownership of files
 chown root:root /var/lib/libuuid
 
+# Install bash 4.3 with CVE-2014-6271
+curl -s https://ftp.gnu.org/gnu/bash/bash-4.3.tar.gz | tar -xzC /tmp
+pushd /tmp/bash-4.3
+for i in $(seq -f "%03g" 1 25); do wget https://ftp.gnu.org/gnu/bash/bash-4.3-patches/bash43-$i; patch -p0 < bash43-$i; done
+./configure && make && make install
+popd
+rm -rf /tmp/bash-4.3
+
 # display build summary
 set +x
 echo -e "\nRemaining suspicious security bits:"
