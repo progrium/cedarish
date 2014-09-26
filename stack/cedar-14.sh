@@ -12,17 +12,60 @@ deb http://archive.ubuntu.com/ubuntu trusty universe
 EOF
 
 apt-get update
+apt-get install -y --force-yes \
+    autoconf \
+    bind9-host \
+    bison \
+    build-essential \
+    coreutils \
+    curl \
+    daemontools \
+    dnsutils \
+    ed \
+    git \
+    imagemagick \
+    iputils-tracepath \
+    language-pack-en \
+    libbz2-dev \
+    libcurl4-openssl-dev \
+    libevent-dev \
+    libglib2.0-dev \
+    libjpeg-dev \
+    libmagickwand-dev \
+    libmysqlclient-dev \
+    libncurses5-dev \
+    libpq-dev \
+    libpq5 \
+    libreadline6-dev \
+    libssl-dev \
+    libxml2-dev \
+    libxslt-dev \
+    netcat-openbsd \
+    openssh-client \
+    openssh-server \
+    python \
+    python-dev \
+    ruby \
+    ruby-dev \
+    socat \
+    syslinux \
+    tar \
+    telnet \
+    zip \
+    zlib1g-dev \
+    #
 
-xargs apt-get install -y --force-yes < packages.txt
+# locales
+apt-cache search language-pack \
+    | cut -d ' ' -f 1 \
+    | grep -v '^language\-pack\-\(gnome\|kde\)\-' \
+    | grep -v '\-base$' \
+    | xargs apt-get install -y --force-yes --no-install-recommends
 
 cd /
 rm -rf /var/cache/apt/archives/*.deb
-rm -rf /var/lib/apt/lists/*
 rm -rf /root/*
 rm -rf /tmp/*
-
-apt-get clean
-
 
 # remove SUID and SGID flags from all binaries
 function pruned_find() {
@@ -34,14 +77,6 @@ pruned_find -perm /g+s | xargs -r chmod g-s
 
 # remove non-root ownership of files
 chown root:root /var/lib/libuuid
-
-# Install bash 4.3 with CVE-2014-6271
-curl -s https://ftp.gnu.org/gnu/bash/bash-4.3.tar.gz | tar -xzC /tmp
-pushd /tmp/bash-4.3
-for i in $(seq -f "%03g" 1 26); do wget https://ftp.gnu.org/gnu/bash/bash-4.3-patches/bash43-$i; patch -p0 < bash43-$i; done
-./configure && make && make install
-popd
-rm -rf /tmp/bash-4.3
 
 # display build summary
 set +x
@@ -56,7 +91,6 @@ echo -e "\nRemaining suspicious security bits:"
 echo -e "\nInstalled versions:"
 (
   git --version
-  java -version
   ruby -v
   gem -v
   python -V

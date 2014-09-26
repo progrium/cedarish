@@ -1,7 +1,5 @@
 FROM ubuntu-debootstrap:14.04
 MAINTAINER progrium "progrium@gmail.com"
 
-RUN mkdir /tmp/build
-ADD ./stack/ /tmp/build
-RUN LC_ALL=C DEBIAN_FRONTEND=noninteractive cd /tmp/build && ./cedar.sh
-RUN rm -rf /tmp/build
+ADD ./stack/cedar-14.sh /tmp/build.sh
+RUN LC_ALL=C DEBIAN_FRONTEND=noninteractive /tmp/build.sh
