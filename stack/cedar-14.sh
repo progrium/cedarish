@@ -53,6 +53,7 @@ apt-get install -y --force-yes \
     telnet \
     zip \
     zlib1g-dev \
+    pigz \
     openjdk-7-jdk \
     #
 
