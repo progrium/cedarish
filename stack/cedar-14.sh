@@ -54,6 +54,7 @@ apt-get install -y --force-yes \
     zip \
     zlib1g-dev \
     pigz \
+    curl \
     openjdk-7-jdk \
     #
 
@@ -79,6 +80,9 @@ pruned_find -perm /g+s | xargs -r chmod g-s
 
 # remove non-root ownership of files
 chown root:root /var/lib/libuuid
+
+echo -e "\n installing compass"
+gem install compass --version 1.0.1
 
 # display build summary
 set +x
