@@ -1,3 +1,6 @@
 
-build:
-	docker build -t progrium/cedarish .
+release:
+	rm -rf release
+	mkdir -p release
+
+.PHONY: release
