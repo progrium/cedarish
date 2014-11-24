@@ -10,7 +10,9 @@ build:
 		$(CEDAR14_BASE) \
 		/mnt/build.sh
 	docker export cedar14-build > build/cedar14.tar
+ifndef CI
 	docker rm -f cedar14-build
+endif
 
 update:
 	curl --fail -s $(CEDAR14_URL) > cedar-14.sh
