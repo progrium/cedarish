@@ -1,5 +1,5 @@
 FROM ubuntu:quantal
-MAINTAINER progrium <progrium@gmail.com>
+MAINTAINER Jeff Lindsay <progrium@gmail.com>
 
 ADD . /tmp/build
 RUN LC_ALL=C DEBIAN_FRONTEND=noninteractive cd /tmp/build && ./cedar.sh
