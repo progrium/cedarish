@@ -4,11 +4,11 @@ CEDAR14_BASE ?= ubuntu-debootstrap:14.04
 build:
 	mkdir -p build
 	docker run --name cedar14-build \
-		-v $(shell pwd)/cedar-14.sh:/tmp/build.sh \
+		-v $(shell pwd)/cedar-14.sh:/mnt/build.sh \
 		-e LC_ALL=C \
 		-e DEBIAN_FRONTEND=noninteractive \
 		$(CEDAR14_BASE) \
-		/tmp/build.sh
+		/mnt/build.sh
 	docker export cedar14-build > build/cedar14.tar
 	docker rm -f cedar14-build
 
