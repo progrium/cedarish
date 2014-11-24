@@ -4,6 +4,7 @@ machine:
 
 dependencies:
   pre:
+  	- sudo apt-get install -y jq
     - wget -O /home/ubuntu/bin/gh-release https://github.com/progrium/gh-release/releases/download/v1.0.0/gh-release
     - chmod +x /home/ubuntu/bin/gh-release
   override:
