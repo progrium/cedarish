@@ -16,17 +16,23 @@ build/cedar14.tar:
 	docker export cedar14-build > build/cedar14.tar
 
 test: build/cedar14.tar
-	docker run --rm cedar14-build bash -c '[[ "$$(git --version)" =~ "git version 1.9" ]]'
-	docker run --rm cedar14-build bash -c '[[ "$$(python -V 2>&1)" =~ "Python 2.7" ]]'
-	docker run --rm cedar14-build bash -c '[[ "$$(ruby --version)" =~ "ruby 1.9" ]]'
-	docker run --rm cedar14-build bash -c '[[ "$$(gem -v)" =~ "1.8" ]]'
+	docker run --name cedar14-test-git    cedar14-build bash -c '[[ "$$(git --version)"  =~ "git version 1.9" ]]'
+	docker run --name cedar14-test-python cedar14-build bash -c '[[ "$$(python -V 2>&1)" =~ "Python 2.7" ]]'
+	docker run --name cedar14-test-ruby   cedar14-build bash -c '[[ "$$(ruby --version)" =~ "ruby 1.9" ]]'
+	docker run --name cedar14-test-gem    cedar14-build bash -c '[[ "$$(gem -v)"         =~ "1.8" ]]'
 
 update:
 	curl --fail -s $(CEDAR14_URL) > cedar-14.sh
 	git diff cedar-14.sh
 
 clean:
-	docker rm -f cedar14-build 2> /dev/null || true
+	docker rm -f \
+		cedar14-build \
+		cedar14-test-git \
+		cedar14-test-python \
+		cedar14-test-ruby \
+		cedar14-test-gem \
+		2> /dev/null || true
 	docker rmi cedar14-build 2> /dev/null || true
 	rm -rf build
 
