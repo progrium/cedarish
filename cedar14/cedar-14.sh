@@ -56,22 +56,6 @@ apt-get install -y --force-yes \
     zlib1g-dev \
     #
 
-# temp workaround for weird missing language pack base packages happening right now...
-# https://bugs.launchpad.net/ubuntu/+source/language-pack-nl-base/+bug/1394923
-# TODO: remove this section when resolved
-install-language-packs-manually() {
-    cd /
-    for pack in $(cat); do 
-        wget http://nl.archive.ubuntu.com/ubuntu/pool/main/l/$pack/${pack}_14.04+20140410_all.deb
-        wget http://nl.archive.ubuntu.com/ubuntu/pool/main/l/$pack-base/$pack-base_14.04+20140410_all.deb   
-        dpkg -i ${pack}_14.04+20140410_all.deb $pack-base_14.04+20140410_all.deb
-    done
-}
-printf "%s\n" language-pack-ast language-pack-el language-pack-gl language-pack-hu language-pack-nb language-pack-nl \
-    | install-language-packs-manually
-# end of workaround
-
-
 # locales
 apt-cache search language-pack \
     | cut -d ' ' -f 1 \
