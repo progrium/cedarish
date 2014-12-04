@@ -1,5 +1,5 @@
-# Cedar-ish
-Heroku Cedar-ish Base Image for Docker
+# Cedarish
+Heroku "Cedar-ish" Base Image for Docker
 
 [![Circle CI](https://circleci.com/gh/progrium/cedarish.png?style=shield)](https://circleci.com/gh/progrium/cedarish)
 
