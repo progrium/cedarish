@@ -3,8 +3,6 @@ machine:
     - docker
 
 dependencies:
-  pre:
-    - make deps
   override:
     - make -C cedar14 build
 
@@ -16,4 +14,5 @@ deployment:
   release:
     branch: release
     commands:
+      - make deps
       - make release
