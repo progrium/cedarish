@@ -1,0 +1,18 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  override:
+    - make -C cedar14 build
+
+test:
+  override:
+    - make -C cedar14 test
+
+deployment:
+  release:
+    branch: release
+    commands:
+      - make deps
+      - make release

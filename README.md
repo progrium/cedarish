@@ -1,6 +1,12 @@
 # Cedar-ish
 Heroku Cedar-ish Base Image for Docker
 
-This is the source for a Docker image to be used for environments emulating the Heroku Cedar stack. It's sort of a mashup of the official [cedar-14.sh](https://github.com/heroku/stack-images/blob/master/bin/cedar-14.sh) Heroku uses, and the prepare script of [Buildstep](https://github.com/progrium/buildstep). 
+[![Circle CI](https://circleci.com/gh/progrium/cedarish.png?style=shield)](https://circleci.com/gh/progrium/cedarish)
 
-It doesn't include any buildpacks, just the base environment. This allows us to build a separate builder container and runner container.
+This is the source for a Docker image used for environments emulating the Heroku Cedar stacks. It's based on the official [Heroku stack images scripts](https://github.com/heroku/stack-images).
+
+It doesn't include any buildpacks, just the base environment. This allows us to build a separate builder container and runner container. See [Herokuish](https://github.com/gliderlabs/herokuish) for emulating the rest of the Heroku build process.
+
+## Releases
+
+Although the latest release is always available on [Docker Hub](https://registry.hub.docker.com/u/progrium/cedarish/), you can access versioned filesystem [releases](https://github.com/progrium/cedarish/releases) directly. Both a tar and gzipped tar are available. This allows you to ADD the tar directly from custom Dockerfiles, or manually import the gzipped tar for quicker downloads.
