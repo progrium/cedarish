@@ -9,4 +9,4 @@ It doesn't include any buildpacks, just the base environment. This allows us to 
 
 ## Releases
 
-Although the latest release is always available on [Docker Hub](https://registry.hub.docker.com/u/progrium/cedarish/), you can access versioned filesystem [releases](https://github.com/progrium/cedarish/releases) directly. Both a tar and gzipped tar are available. This allows you to ADD the tar directly from custom Dockerfiles, or manually import the gzipped tar for quicker downloads.
+Although the latest release is always available on [Docker Hub](https://registry.hub.docker.com/u/progrium/cedarish/), you can access versioned filesystem [releases](https://github.com/progrium/cedarish/releases) directly. Both a tar and gzipped tar are available. This allows you to ADD the tar directly from custom Dockerfiles, or manually import the gzipped tar for quicker downloads (`docker import <release-url> progrium/cedarish`).
