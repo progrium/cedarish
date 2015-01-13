@@ -5,6 +5,7 @@ build: build/cedar14.tar
 
 build/cedar14.tar:
 	mkdir -p build
+	docker pull $(CEDAR14_BASE)
 	docker run --name cedar14-build \
 		-v $(shell pwd)/cedar-14.sh:/mnt/build.sh \
 		-v $(shell pwd)/patches:/mnt/patches \
