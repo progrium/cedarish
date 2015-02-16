@@ -15,4 +15,5 @@ deployment:
     branch: release
     commands:
       - make deps
-      - make release
+      - make release:
+          timeout: 300
