@@ -10,3 +10,9 @@ It doesn't include any buildpacks, just the base environment. This allows us to 
 ## Releases
 
 Although the latest release is always available on [Docker Hub](https://registry.hub.docker.com/u/progrium/cedarish/), you can access versioned filesystem [releases](https://github.com/progrium/cedarish/releases) directly. Both a tar and gzipped tar are available. This allows you to ADD the tar directly from custom Dockerfiles, or manually import the gzipped tar for quicker downloads (`docker import <release-url> progrium/cedarish`).
+
+## Contributing
+
+As usual, pull requests are welcome. You can also propose releases by opening a PR against the release branch from master. Please be sure to bump the version and update CHANGELOG.md and include your changelog text in the PR body.
+
+Discuss cedarish development with us on Freenode in #gliderlabs.

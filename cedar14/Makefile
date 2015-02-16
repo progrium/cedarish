@@ -37,4 +37,4 @@ clean:
 	docker rmi cedar14-build 2> /dev/null || true
 	rm -rf build
 
-.PHONY: build update clean
+.PHONY: build
