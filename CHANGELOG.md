@@ -12,12 +12,16 @@ All notable changes to this project will be documented in this file.
 
 ## [v3] - 2015-02-16
 ### Added
-- package: openjdk-7-jdk
+- Added package: openjdk-7-jdk
 - PR driven automated releases
-- changelog
+- Added changelog
 
 ### Changed
-- switched ADD to COPY in Dockerfile
+- Switched ADD to COPY in Dockerfile
+- Docker Hub tags point to release branch, except new master tag
+
+### Removed
+- Dropped un-gzipped tar release artifact. Too big for Github
 
 [unreleased]: https://github.com/progrium/cedarish/compare/v3...HEAD
 [v3]: https://github.com/progrium/cedarish/compare/v2...v3
