@@ -1,4 +1,7 @@
 # Cedarish
+
+NOTE: this project has been deprecated in favour of the official [heroku/cedar](https://github.com/heroku/stack-images) image.
+
 Heroku "Cedar-ish" Base Image for Docker
 
 [![Circle CI](https://circleci.com/gh/progrium/cedarish.png?style=shield)](https://circleci.com/gh/progrium/cedarish)
