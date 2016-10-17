@@ -12,6 +12,9 @@ deb http://archive.ubuntu.com/ubuntu trusty universe
 EOF
 
 apt-get update
+apt-get install -y software-properties-common
+add-apt-repository  -y ppa:openjdk-r/ppa
+apt-get update
 apt-get install -y --force-yes \
     autoconf \
     bind9-host \
@@ -41,8 +44,8 @@ apt-get install -y --force-yes \
     libxml2-dev \
     libxslt-dev \
     netcat-openbsd \
-    openjdk-7-jdk \
-    openjdk-7-jre-headless \
+    openjdk-8-jdk \
+    openjdk-8-jre-headless \
     openssh-client \
     openssh-server \
     postgresql-server-dev-9.3 \
@@ -102,6 +105,7 @@ echo -e "\nInstalled versions:"
   ruby -v
   gem -v
   python -V
+  java -version
 ) | sed -u "s/^/  /"
 
 echo -e "\nSuccess!"
