@@ -62,6 +62,9 @@ apt-get install -y --force-yes \
     pigz \
     curl \
     #
+    
+update-ca-certificates -f
+
 
 # locales
 apt-cache search language-pack \
